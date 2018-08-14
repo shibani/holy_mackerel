@@ -9,9 +9,9 @@ services:
   - postgresql
 
 before_script:
+  - cd src
   - docker build -t my_hm_image .
   - docker-compose build
-  - cd src
   - mix deps get
   - cp config/travis.exs config/test.exs
   - cd assets && npm install

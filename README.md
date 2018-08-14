@@ -1,35 +1,34 @@
 # Holy Mackerel
 
-To Install
+**To Install**
 
-1. Clone this repo
-2. cd into repo folder on local machine
-3. run `docker build -t <enter any_name here to name your image> .`
-4. run `docker-compose build`
+* Clone this repo
+* cd into repo folder on local machine
+* run `docker build -t <enter any_name here to name your image> .`
+* run `docker-compose build`
 
-In the root folder run
-1. `./mix deps get`
-2. `./mix ecto.create`
-3. `./mix ecto.migrate`
+**In the root folder run**
+* `./mix deps get`
+* `./mix ecto.create`
+* `./mix ecto.migrate`
 
-cd from the root into the **src** folder. Now run:  
+**cd from the root into the src folder. Now run:**  
 `cd assets && npm install`  
 
-To build and start your container (recreates):  
+**To build and start your container (recreates):**  
 `docker-compose up`  
 
 ___
 
-To view your images:  
+**To view your images:**  
 `docker images`  
 
-To view your containers:  
+**To view your containers:**  
 `docker container ls` (will show you only started containers)  
 `docker container ls --all` (will show you all containers, stopped and started)  
 
-To stop your containers:  
+**To stop your containers:**  
 `docker stop <name_of_app_container> <name_of_db_container>`  
 
-To re-start your containers:  
+**To re-start your containers:**  
 `docker start <name_of_app_container> <name_of_db_container>`  
-___

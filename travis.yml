@@ -1,7 +1,7 @@
 language: elixir
 
-elixir:
-  - 1.7.1
+elixir: '1.6.6'
+otp_release: '20'
 
 addons:
   postgresql: '10'

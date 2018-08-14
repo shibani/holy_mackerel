@@ -3,7 +3,7 @@
 **To Install**
 
 * Clone this repo
-* cd into repo folder on local machine
+* From the command line, cd into repo folder on local machine
 * run `docker build -t <enter any_name here to name your image> .`
 * run `docker-compose build`
 
@@ -25,7 +25,7 @@ Navigate to http://localhost:4000/
 ___
 
 **To view your images:**  
-`docker images`  
+In terminal, enter: `docker images`  
 
 **To view your containers:**  
 `docker container ls` (will show you only started containers)  

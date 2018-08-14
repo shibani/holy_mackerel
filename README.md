@@ -14,6 +14,7 @@
 
 **cd from the root into the** `src` **folder. Now run:**  
 `cd assets && npm install`  
+&nbsp;  
 <sup><sub>**Note:** When installing npm, the auto-installed Growl 1.8.1 dependency shows up as a critical vulnerability in Git. To fix this, cd into `assets` and open `package-lock.json`.  Find and replace all Growl 1.8.1 dependencies with 1.10.0)</sub></sup>
 
 **To build and start your container (recreates):**  

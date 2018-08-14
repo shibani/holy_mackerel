@@ -12,11 +12,13 @@ In the root folder run
 2. `./mix ecto.create`
 3. `./mix ecto.migrate`
 
-While you are in the **src** folder  
+cd from the root into the **src** folder. Now run:  
 `cd assets && npm install`  
 
 To build and start your container (recreates):  
 `docker-compose up`  
+
+___
 
 To view your images:  
 `docker images`  
@@ -30,3 +32,4 @@ To stop your containers:
 
 To re-start your containers:  
 `docker start <name_of_app_container> <name_of_db_container>`  
+___

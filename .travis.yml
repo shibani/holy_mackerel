@@ -8,12 +8,11 @@ addons:
 services:
   - postgresql
 
-before_install: cd src
-
 before_script:
   - docker build -t my_hm_image .
   - docker-compose build
-  - mix deps get
+  - cd src
+  - mix deps.get
   - cp config/travis.exs config/test.exs
   - cd assets && npm install
   - mix do ecto.create, ecto.migrate

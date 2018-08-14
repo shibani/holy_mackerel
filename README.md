@@ -8,7 +8,7 @@
 * run `docker-compose build`
 
 **In the root folder run**
-* `./mix deps get`
+* `./mix deps.get`
 * `./mix ecto.create`
 * `./mix ecto.migrate`
 

@@ -8,8 +8,9 @@ addons:
 services:
   - postgresql
 
+before_install: cd src
+
 before_script:
-  - cd src
   - docker build -t my_hm_image .
   - docker-compose build
   - mix deps get

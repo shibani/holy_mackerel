@@ -17,7 +17,7 @@
 &nbsp;  
 **Note:** When running `npm install` above, the auto-installed `Growl 1.8.1` dependency shows up as a critical vulnerability in Git. To fix this, cd into `assets` and open `package-lock.json`.  Find and replace all `Growl 1.8.1` dependencies with `Growl 1.10.0`)
 
-**To build and start your container (recreates):**  
+**To build and start up your container (recreates the container):**  
 `docker-compose up`  
 
 ___
@@ -32,5 +32,5 @@ ___
 **To stop your containers:**  
 `docker stop <name_of_app_container> <name_of_db_container>`  
 
-**To re-start your containers:**  
+**To re-start your containers without re-creating them:**  
 `docker start <name_of_app_container> <name_of_db_container>`  

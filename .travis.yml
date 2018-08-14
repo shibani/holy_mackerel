@@ -9,7 +9,8 @@ services:
   - postgresql
 
 before_script:
-  - cp src/config/travis.exs src/config/test.exs
+  - cd src
+  - cp config/travis.exs config/test.exs
   - mix do ecto.create, ecto.migrate
 
 env:

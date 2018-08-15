@@ -6,17 +6,15 @@ addons:
   postgresql: '10'
 
 services:
-  - docker
+  - postgresql
 
-before_install:
-  - docker build -t my_hm_image .
-  - docker-compose build
-  - ./mix deps.get
-  - ./mix ecto.create
-  - ./mix ecto.migrate
-  - cd src/assets && npm install
-  - cd ..
+before_install: cd src
+
+before_script:
   - cp config/travis.exs config/test.exs
+  - cd assets && npm install
+  - cd ..
+  - mix do ecto.create, ecto.migrate
 
 env:
   - MIX_ENV=test

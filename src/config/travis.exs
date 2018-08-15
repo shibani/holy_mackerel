@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :yelp, YelpWeb.Endpoint,
   http: [port: 4001],
-  server: true
+  server: false
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :yelp, Yelp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "yelp_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

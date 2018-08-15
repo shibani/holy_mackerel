@@ -19,7 +19,7 @@ before_install:
   - cp config/travis.exs config/test.exs
 
 env:
-  - MIX_ENV=test mix phx.server
+  - MIX_ENV=test mix phx.server 
 
 script:
   - mix test

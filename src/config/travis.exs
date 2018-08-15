@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :yelp, Yelp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "yelp_test",
   hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox

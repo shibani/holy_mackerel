@@ -12,8 +12,7 @@ before_install: cd src
 
 before_script:
   - cp config/travis.exs config/test.exs
-  - ./mix ecto.create 
-  - ./mix ecto.migrate
+  - mix do ecto.create, ecto.migrate
 
 env:
   - MIX_ENV=test

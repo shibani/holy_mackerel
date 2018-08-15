@@ -15,6 +15,7 @@ before_install:
 
 before_script:
   - cp config/travis.exs config/test.exs
+  - sleep 5s
   - mix do ecto.create, ecto.migrate
 
 env:

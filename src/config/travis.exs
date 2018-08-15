@@ -15,5 +15,5 @@ config :yelp, Yelp.Repo,
   username: "postgres",
   password: "",
   database: "yelp_test",
-  hostname: "localhost",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox

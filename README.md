@@ -36,3 +36,8 @@ In terminal, enter: `docker images`
 
 **To re-start your containers without re-creating them:**  
 `docker start <name_of_app_container> <name_of_db_container>`  
+___
+
+**To run tests:**  
+cd into the `src` directory
+run `mix tests`

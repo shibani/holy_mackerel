@@ -9,9 +9,9 @@ addons:
 
 before_install:
   - cd src
-  - psql -c 'create database travis_ci_test;' -U postgres
 
 before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/travis.exs config/test.exs
   - mix do ecto.create, ecto.migrate
 

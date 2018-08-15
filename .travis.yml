@@ -1,5 +1,3 @@
-sudo: required
-
 language: elixir
 
 elixir: '1.6.6'
@@ -8,15 +6,17 @@ addons:
   postgresql: '10'
 
 services:
-  - postgresql
+  - docker
 
-before_install: cd src
-
-before_script:
-  - cp config/travis.exs config/test.exs
-  - cd assets && npm install
+before_install:
+  - docker build -t my_hm_image .
+  - docker-compose build
+  - ./mix deps.get
+  - ./mix ecto.create
+  - ./mix ecto.migrate
+  - cd src/assets && npm install
   - cd ..
-  - mix do ecto.create, ecto.migrate
+  - cp config/travis.exs config/test.exs
 
 env:
   - MIX_ENV=test

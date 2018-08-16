@@ -30,6 +30,6 @@ end
 # when running `mix release`, the first release in the file
 # will be used by default
 
-release :app do
+release :yelp do
   set version: current_version(:yelp)
 end

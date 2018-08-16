@@ -16,13 +16,13 @@ use Mix.Releases.Config,
 environment :dev do
   set dev_mode: true
   set include_erts: false
-  set cookie: :"h[R=/~v0TBRB6_HH7}w*AIA0J[NVB?1cqHb>~V.ie5fGzoxN@1V1SSLe1IZMR0xg"
+  set cookie: :")=K)7=J=I?]lkp9oq&;^I?l~l){/&!pmYt}5pulS10%j~5JqtdbmM4)l9](~J<SF"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"|X`TJ;}_?)iD>Ipo&v_d/3^4k?YU$x,;7:1px]rt^57Vry9Q;0@Ti8fPT~ip&`^x"
+  set cookie: :"WJc3PM.shMGov$&f`I66qmSong`Y/f~(0G=V&TY{M*B]m=MZM3$)jq9LrV!%Q;:9"
 end
 
 # You may define one or more releases in this file.
@@ -30,7 +30,6 @@ end
 # when running `mix release`, the first release in the file
 # will be used by default
 
-release :yelp do
+release :app do
   set version: current_version(:yelp)
 end
-

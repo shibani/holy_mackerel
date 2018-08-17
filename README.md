@@ -39,5 +39,5 @@ In terminal, enter: `docker images`
 ___
 
 **To run tests:**  
-cd into the `src` directory
-run `mix tests`
+In root folder run
+`./mix tests`

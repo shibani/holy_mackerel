@@ -19,6 +19,11 @@ defmodule YelpWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", YelpWeb do
+    pipe_through :api 
+    resources "/restaurants", RestaurantController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", YelpWeb do
   #   pipe_through :api

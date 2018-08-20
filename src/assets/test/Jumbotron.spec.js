@@ -11,7 +11,7 @@ const wrapper = shallow(<Jumbotron />)
 
 describe('Jumbotron Component', () => {
   it('renders h2', () => {
-    expect(wrapper.find('h2').text()).to.equal('Welcome to Phoenix with Webpack and React')
+    expect(wrapper.find('h2').text()).to.equal('Welcome to Phoenixwith Webpack and React')
   })
   it('renders p', () => {
     expect(wrapper.find('p').text()).to.equal('A productive web framework thatdoes not compromise speed and maintainability.')

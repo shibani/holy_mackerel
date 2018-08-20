@@ -1,3 +1,4 @@
+import css from "../css/app.css"
 // Brunch automatically concatenates all files in your
 // watched paths. Those paths can be configured at
 // config.paths.watched in "brunch-config.js".
@@ -19,3 +20,9 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import React from "react";
+import ReactDOM from "react-dom";
+
+import Jumbotron from './components/Jumbotron';
+
+ReactDOM.render(<Jumbotron />, document.getElementById("react-app"));

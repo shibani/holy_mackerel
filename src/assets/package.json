@@ -3,7 +3,8 @@
   "license": "MIT",
   "scripts": {
     "deploy": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
+    "watch": "webpack --watch-stdin --mode development",
+    "build": "webpack --env.target production",
     "test": "mocha --reporter spec testSetup.js \"test/*.spec.js\""
   },
   "dependencies": {

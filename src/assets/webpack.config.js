@@ -4,7 +4,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = (env, options) => ({
+module.exports = (env, options) => (
+  return env.target === 'production' ? productionConfig() : developmentConfig();
+  {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: false }),

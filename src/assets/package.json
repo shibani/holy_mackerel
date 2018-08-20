@@ -4,7 +4,8 @@
   "scripts": {
     "deploy": "webpack --mode production",
     "watch": "webpack --watch-stdin --mode development",
-    "build": "webpack --env.target production",
+    "build:dev": "webpack --progress --colors --watch",
+    "build:prod": "NODE_ENV=production webpack --progress --colors -p",
     "test": "mocha --reporter spec testSetup.js \"test/*.spec.js\""
   },
   "dependencies": {

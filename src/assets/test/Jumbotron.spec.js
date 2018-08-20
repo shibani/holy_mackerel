@@ -1,10 +1,8 @@
 import React from 'react'
-import chai from 'chai'
+import { expect, assert, should } from 'chai'
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
-var expect = require('chai').expect;
-var assert = chai.assert;
 import { shallow, mount, render } from 'enzyme'
 import Jumbotron from '../js/components/Jumbotron'
 

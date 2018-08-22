@@ -1,0 +1,4 @@
+cd $phoenix_dir
+cwd ./assets deploy
+cwd $phoenix_dir
+./mix "${phoenix_ex}.digest"

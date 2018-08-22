@@ -14,6 +14,6 @@ describe('Jumbotron Component', () => {
     expect(wrapper.find('h2').text()).to.equal('Welcome to Phoenixwith Webpack and React')
   })
   it('renders p', () => {
-    expect(wrapper.find('p').text()).to.equal('A productive web framework that does not compromise speed and maintainability.')
+    expect(wrapper.find('p').text()).to.equal('A productive web framework that does not compromise speed and fun times.')
   })
 })

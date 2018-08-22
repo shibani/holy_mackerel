@@ -1,1 +1,32 @@
-.jumbotron{background:#eee;padding:50px 0;text-align:center}#react-app .jumbotron{background:#ff0}
+/* This file is for your main application css. */
+
+.jumbotron {
+  background: #eee;
+  text-align: center;
+  padding: 20px 0;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.jumbotron p.site-header{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.jumbotron p.site-description{
+  font-style:italic;
+}
+
+#react-app .jumbotron{
+  background: #eee;
+}
+
+nav{
+  background: #eee;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+nav ul li a{
+  color: #333;
+}

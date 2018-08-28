@@ -10,10 +10,10 @@ import Jumbotron from '../js/components/Jumbotron'
 const wrapper = shallow(<Jumbotron />)
 
 describe('Jumbotron Component', () => {
-  it('renders h2', () => {
-    expect(wrapper.find('h2').text()).to.equal('Welcome to Phoenixwith Webpack and React')
+  it('renders p.header', () => {
+    expect(wrapper.find('p.header').text()).to.equal('Holy Mackerel')
   })
-  it('renders p', () => {
-    expect(wrapper.find('p').text()).to.equal('A productive web framework thatdoes not compromise speed and maintainability.')
-  })
+  // it('renders p', () => {
+  //   expect(wrapper.find('p').text()).to.equal('A productive web framework that does not compromise speed and fun times.')
+  // })
 })

@@ -19,6 +19,6 @@ defmodule Yelp.Restaurants.Restaurant do
   def changeset(restaurant, attrs) do
     restaurant
     |> cast(attrs, [:name, :address1, :address2, :city, :state, :phone, :website])
-    |> validate_required([:name, :address1, :address2, :city, :state, :phone, :website])
+    |> validate_required([:name])
   end
 end

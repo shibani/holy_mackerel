@@ -64,7 +64,8 @@ config :logger, level: :info
 # import_config "prod.secret.exs"
 
 config :yelp, YelpWeb.Endpoint,
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  server: true
 
 config :yelp, Yelp.Repo,
   adapter: Ecto.Adapters.Postgres,

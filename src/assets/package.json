@@ -37,14 +37,8 @@
     "jsdom": "^12.0.0",
     "mocha": "^5.2.0",
     "webpack-dev-server": "^3.1.5"
-<<<<<<< Updated upstream
-  }, 
-  "resolutions": {
-    "growl": "1.10.5" 
-=======
   },
   "resolutions": {
     "growl": "^1.10.0"
->>>>>>> Stashed changes
   }
 }

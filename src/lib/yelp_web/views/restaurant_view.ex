@@ -18,6 +18,7 @@ defmodule YelpWeb.RestaurantView do
       city: restaurant.city,
       state: restaurant.state,
       phone: restaurant.phone,
-      website: restaurant.website}
+      website: restaurant.website
+    }
   end
 end

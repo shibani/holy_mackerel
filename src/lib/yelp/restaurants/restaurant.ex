@@ -2,7 +2,6 @@ defmodule Yelp.Restaurants.Restaurant do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "restaurants" do
     field :address1, :string
     field :address2, :string

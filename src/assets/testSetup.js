@@ -43,6 +43,10 @@ global.navigator = {
   userAgent: 'node.js',
 };
 
+global.requestAnimationFrame = function(callback) {
+  setTimeout(callback, 0);
+};
+
 /*Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property)

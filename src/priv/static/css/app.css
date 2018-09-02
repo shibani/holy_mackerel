@@ -30,3 +30,21 @@ nav{
 nav ul li a{
   color: #333;
 }
+
+.col-lg-6{
+  width: 50%;
+  float: left;
+}
+
+#react-app{
+  margin-bottom:50px;
+}
+
+.restaurants {
+  margin-top:50px;
+}
+
+.marketing{
+  border-top:1px solid #b0b0b0;
+}
+

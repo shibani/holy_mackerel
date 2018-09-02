@@ -23,6 +23,6 @@ import css from "../css/app.css"
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Jumbotron from './components/Jumbotron';
+import Contents from './components/Contents';
 
-ReactDOM.render(<Jumbotron />, document.getElementById("react-app"));
+ReactDOM.render(<Contents />, document.getElementById("react-app"));

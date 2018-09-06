@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
 
 const fetch = require('isomorphic-fetch');
-
 let location = '';
 const hostname = window && window.location && window.location.hostname;
 
@@ -31,9 +30,9 @@ class RestaurantDetail extends Component {
     if(context == 'restaurant'){
       let restaurantUrl = location + path + id;
       console.log(restaurantUrl)
-      fetchRestaurantsApi(restaurantUrl)
+      /*fetchRestaurantsApi(restaurantUrl)
       .then(response => this.setState({ restaurant: response })
-    )}
+    )*/}
   }
 
   render(){

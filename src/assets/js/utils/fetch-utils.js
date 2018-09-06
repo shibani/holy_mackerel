@@ -1,5 +1,6 @@
 export function fetchRestaurantsApi(url) {
     return fetch(url)
+    
     .then(response => {
         if (response.ok) {
         return response;

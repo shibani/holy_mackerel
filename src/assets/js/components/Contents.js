@@ -3,7 +3,6 @@ import Restaurants from "./Restaurants";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
 
 const fetch = require('isomorphic-fetch');
-
 let location = '';
 const hostname = window && window.location && window.location.hostname;
 

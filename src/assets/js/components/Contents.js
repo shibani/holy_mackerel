@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "./Jumbotron";
 import Restaurants from "./Restaurants";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
 
@@ -7,7 +6,6 @@ const fetch = require('isomorphic-fetch');
 
 let location = '';
 const hostname = window && window.location && window.location.hostname;
-
 
 if (hostname === 'localhost') {
   location = 'http://localhost:4000'
@@ -38,8 +36,7 @@ class Contents extends Component {
   render(){
     return (
       <div className="contents">
-        <Jumbotron />
-        <Restaurants listItems={this.state.items} />
+        {<Restaurants listItems={this.state.items} />}
       </div>
     );
   }

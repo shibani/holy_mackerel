@@ -1,6 +1,6 @@
 import React from "react";
 
-const Jumbotron = () => {
+const Header = () => {
   return (
     <div className="jumbotron">
       <p className="site-header">Holy Mackerel</p>
@@ -9,4 +9,4 @@ const Jumbotron = () => {
   )
 };
 
-export default Jumbotron;
+export default Header;

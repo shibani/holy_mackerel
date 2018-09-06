@@ -4,12 +4,12 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 import { shallow, mount, render } from 'enzyme'
-import Jumbotron from '../js/components/Jumbotron'
+import Header from '../js/components/Header'
 
 
-const wrapper = shallow(<Jumbotron />)
+const wrapper = shallow(<Header />)
 
-describe('Jumbotron Component', () => {
+describe('Header Component', () => {
   it('renders the header', () => {
     expect(wrapper.find('p.site-header').text()).to.equal('Holy Mackerel')
   })

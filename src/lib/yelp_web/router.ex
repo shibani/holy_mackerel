@@ -13,15 +13,15 @@ defmodule YelpWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", YelpWeb do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-  end
-
   # Other scopes may use custom stacks.
   scope "/api", YelpWeb do
     pipe_through :api
     resources "/restaurants", RestaurantController
+  end
+
+  scope "/", YelpWeb do
+    pipe_through :browser # Use the default browser stack
+
+    get "/*path", PageController, :index
   end
 end

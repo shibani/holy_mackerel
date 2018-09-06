@@ -6,23 +6,20 @@ configure({ adapter: new Adapter() });
 import { shallow, mount, render } from 'enzyme';
 import chaiEnzyme from 'chai-enzyme';
 import Contents from '../js/components/Contents';
-import Jumbotron from '../js/components/Jumbotron'
-import Restaurants from '../js/components/Restaurants'
+import Restaurants from '../js/components/Restaurants';
+import { MemoryRouter } from 'react-router-dom';
 
-const chai = require('chai');
-const chaiFetch = require('chai-fetch');
-chai.use(chaiFetch)
-chai.use(chaiEnzyme())
-
-const wrapper = mount(<Contents />)
+const wrapper = mount(<MemoryRouter><Contents /></MemoryRouter>)
 
 describe('the main container', () => {
-
-    it('renders the Jumbotron component', () => {
-        expect(wrapper).to.containMatchingElement(<Jumbotron />);
-    })
 
     it('renders the Restaurants component', () => {
         expect(wrapper).to.containMatchingElement(<Restaurants />);
     })
+
+    /*it('ComponentDidMount', () => {
+        wrapper = shallow(<Contents  {...props}/>)
+        wrapper.instance().componentDidMount()
+        expect(loadData.calledOnce).toBe(true)
+    })*/
 })

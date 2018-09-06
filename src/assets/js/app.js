@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Contents from './components/Contents';
 import NotFoundPage from './components/NotFoundPage';
+import RestaurantDetail from "./components/RestaurantDetail";
 
 class Login extends React.Component {
     render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
                 <div>
                 <Switch>
                     <Route path="/" exact={true} component={Contents} />
+                    <Route path="/restaurants/:id" component={RestaurantDetail} />
                     <Route path="/login" component={Login} />
                     <Route component={NotFoundPage} />
                 </Switch>

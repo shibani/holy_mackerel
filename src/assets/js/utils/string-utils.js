@@ -1,3 +1,3 @@
-export function friendlyize(string) {
+export function slugify(string) {
    return string.replace(/\s+/g, '-').toLowerCase();
 }

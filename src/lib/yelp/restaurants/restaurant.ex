@@ -10,6 +10,7 @@ defmodule Yelp.Restaurants.Restaurant do
     field :phone, :string
     field :state, :string
     field :website, :string
+    field :slug, :string
 
     timestamps()
   end
@@ -17,7 +18,7 @@ defmodule Yelp.Restaurants.Restaurant do
   @doc false
   def changeset(restaurant, attrs) do
     restaurant
-    |> cast(attrs, [:name, :address1, :address2, :city, :state, :phone, :website])
+    |> cast(attrs, [:name, :address1, :address2, :city, :state, :phone, :website, :slug])
     |> validate_required([:name])
   end
 end

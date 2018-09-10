@@ -21,7 +21,8 @@ Repo.insert! %Restaurant{
   city: "New York",
   state: "NY",
   phone: "212-965-1414",
-  website: "https://balthazarny.com/"
+  website: "https://balthazarny.com/",
+  slug: "balthazar"
 }
 
 Repo.insert! %Restaurant{
@@ -31,7 +32,8 @@ Repo.insert! %Restaurant{
   city: "New York",
   state: "NY",
   phone: "212-254-3500",
-  website: "https://ssambar.momofuku.com/"
+  website: "https://ssambar.momofuku.com/",
+  slug: "momofuku-ssam"
 }
 
 Repo.insert! %Restaurant{
@@ -41,7 +43,8 @@ Repo.insert! %Restaurant{
   city: "New York",
   state: "NY",
   phone: "212-777-2410",
-  website: "https://maialinonyc.com/"
+  website: "https://maialinonyc.com/",
+  slug: "maialino"
 }
 
 Repo.insert! %Restaurant{
@@ -51,7 +54,8 @@ Repo.insert! %Restaurant{
   city: "Brooklyn",
   state: "NY",
   phone: "718-383-5345",
-  website: "http://fiveleavesny.com/"
+  website: "http://fiveleavesny.com/",
+  slug: "five-leaves"
 }
 
 Repo.insert! %Restaurant{
@@ -61,5 +65,6 @@ Repo.insert! %Restaurant{
   city: "Brooklyn",
   state: "NY",
   phone: "718-230-0061",
-  website: "https://www.speedyromeo.com/"
+  website: "https://www.speedyromeo.com/",
+  slug: "speedy-romeo"
 }

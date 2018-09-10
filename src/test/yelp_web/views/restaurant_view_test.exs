@@ -6,7 +6,7 @@ defmodule YelpWeb.RestaurantViewTest do
   #Bring render/3 and render_to_string/3 for testing custom views
   alias YelpWeb.RestaurantView
 
-  @create_attrs1 %{address1: "some address1", address2: "some address2", city: "some city", name: "Foo Restaurant", phone: "some phone", state: "some state", website: "some website"}
+  @create_attrs1 %{address1: "some address1", address2: "some address2", city: "some city", name: "Foo Restaurant", phone: "some phone", state: "some state", website: "some website", slug: "some-name"}
 
   def fixture(:restaurant) do
     {:ok, restaurant} = Restaurants.create_restaurant(@create_attrs1)
@@ -27,10 +27,10 @@ defmodule YelpWeb.RestaurantViewTest do
         city: restaurant.city,
         state: restaurant.state,
         phone: restaurant.phone,
-        website: restaurant.website
+        website: restaurant.website,
+        slug: restaurant.slug
       }
 
-    # IO.inspect restaurants
     rendered_restaurants = RestaurantView.render("index.json", %{restaurants: [restaurant]})
     assert rendered_restaurants == %{
       data: [expected_restaurant]
@@ -47,7 +47,8 @@ defmodule YelpWeb.RestaurantViewTest do
         city: restaurant.city,
         state: restaurant.state,
         phone: restaurant.phone,
-        website: restaurant.website
+        website: restaurant.website,
+        slug: restaurant.slug
     }
     rendered_restaurant = RestaurantView.render("show.json", %{restaurant: restaurant})
 

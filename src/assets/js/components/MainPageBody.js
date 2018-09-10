@@ -15,21 +15,20 @@ if (hostname === 'localhost') {
 let path = '/api/restaurants';
 let restaurantsUrl = location + path;
 
-class Contents extends Component {
+class MainPageBody extends Component {
   constructor(props){
     super(props);
     this.state = {items : [] }
   }
 
   componentDidMount() {
-    this.loadData('restaurants');
+    this.loadData(restaurantsUrl);
   }
 
-  loadData(context) {
-    if(context == 'restaurants'){
-      fetchRestaurantsApi(restaurantsUrl)
+  loadData(url) {
+    fetchRestaurantsApi(url)
       .then(response => this.setState({ items: response })
-    )}
+    )
   }
 
   render(){
@@ -41,4 +40,4 @@ class Contents extends Component {
   }
 }
 
-export default Contents;
+export default MainPageBody;

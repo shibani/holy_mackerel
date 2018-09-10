@@ -1,14 +1,13 @@
 defmodule Yelp.RestaurantsTest do
   use Yelp.DataCase
-
   alias Yelp.Restaurants
 
   describe "restaurants" do
     alias Yelp.Restaurants.Restaurant
 
-    @valid_attrs %{address1: "some address1", address2: "some address2", city: "some city", name: "some name", phone: "some phone", state: "some state", website: "some website"}
-    @update_attrs %{address1: "some updated address1", address2: "some updated address2", city: "some updated city", name: "some updated name", phone: "some updated phone", state: "some updated state", website: "some updated website"}
-    @invalid_attrs %{address1: nil, address2: nil, city: nil, name: nil, phone: nil, state: nil, website: nil}
+    @valid_attrs %{address1: "some address1", address2: "some address2", city: "some city", name: "some name", phone: "some phone", state: "some state", website: "some website", slug: "some-name"}
+    @update_attrs %{address1: "some updated address1", address2: "some updated address2", city: "some updated city", name: "some updated name", phone: "some updated phone", state: "some updated state", website: "some updated website", slug: "some-updated-name"}
+    @invalid_attrs %{address1: nil, address2: nil, city: nil, name: nil, phone: nil, state: nil, website: nil, slug: nil}
 
     def restaurant_fixture(attrs \\ %{}) do
       {:ok, restaurant} =
@@ -38,6 +37,7 @@ defmodule Yelp.RestaurantsTest do
       assert restaurant.phone == "some phone"
       assert restaurant.state == "some state"
       assert restaurant.website == "some website"
+      assert restaurant.slug == "some-name"
     end
 
     test "create_restaurant/1 with invalid data returns error changeset" do
@@ -73,5 +73,12 @@ defmodule Yelp.RestaurantsTest do
       restaurant = restaurant_fixture()
       assert %Ecto.Changeset{} = Restaurants.change_restaurant(restaurant)
     end
+
+    test "can slugify its own name" do
+      name = "Gregory’s 26 Corner Taverna"
+      result = "gregorys-26-corner-taverna"
+      assert Restaurants.slugified_name(name) == result
+     end
   end
 end
+

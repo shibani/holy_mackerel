@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Contents from './components/Contents';
+import MainPageBody from './components/MainPageBody';
 import NotFoundPage from './components/NotFoundPage';
 import RestaurantDetail from "./components/RestaurantDetail";
 
@@ -28,7 +28,7 @@ class App extends React.Component {
                 </header>
                 <div>
                 <Switch>
-                    <Route path="/" exact={true} component={Contents} />
+                    <Route path="/" exact={true} component={MainPageBody} />
                     <Route path="/restaurants/:id" component={RestaurantDetail} />
                     <Route path="/login" component={Login} />
                     <Route component={NotFoundPage} />

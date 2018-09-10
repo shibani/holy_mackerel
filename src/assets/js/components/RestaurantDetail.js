@@ -23,15 +23,14 @@ class RestaurantDetail extends Component {
   componentDidMount () {
     const name = this.props.match.params.name
     const id = this.props.location.state.id
-    this.loadData('restaurant', id);
+    this.loadData(name);
   }
 
-  loadData(context, id) {
-    if(context == 'restaurant'){
-      let restaurantUrl = location + path + id;
-      fetchRestaurantsApi(restaurantUrl)
+  loadData(name) {
+    let restaurantUrl = location + path + name;
+    fetchRestaurantsApi(restaurantUrl)
       .then(response => this.setState({ restaurant: response })
-    )}
+    )
   }
 
   render(){

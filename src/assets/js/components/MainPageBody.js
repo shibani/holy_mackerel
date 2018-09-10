@@ -3,15 +3,7 @@ import Restaurants from "./Restaurants";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
 
 const fetch = require('isomorphic-fetch');
-let location = '';
-const hostname = window && window.location && window.location.hostname;
-
-if (hostname === 'localhost') {
-  location = 'http://localhost:4000'
-} else {
-  location = 'https://holy-mackerel.gigalixirapp.com'
-}
-
+let location = window.location.protocol + "//" + window.location.host;
 let path = '/api/restaurants';
 let restaurantsUrl = location + path;
 
@@ -26,6 +18,7 @@ class MainPageBody extends Component {
   }
 
   loadData(url) {
+    console.log("url: " + url)
     fetchRestaurantsApi(url)
       .then(response => this.setState({ items: response })
     )

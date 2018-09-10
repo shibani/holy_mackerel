@@ -27,11 +27,6 @@ defmodule YelpWeb.RestaurantController do
     render(conn, "show.json", restaurant: restaurant)
   end
 
-  # def show(conn, %{"id" => name}) do
-  #   restaurant = Restaurants.get_restaurant_by_name!(name)
-  #   render(conn, "show.json", restaurant: restaurant)
-  # end
-
   def update(conn, %{"id" => id, "restaurant" => restaurant_params}) do
     restaurant = Repo.get_by!(Restaurant, id: id)
 

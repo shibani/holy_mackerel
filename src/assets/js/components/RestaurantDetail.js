@@ -2,16 +2,7 @@ import React, { Component } from "react";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
 
 const fetch = require('isomorphic-fetch');
-let location = '';
-const hostname = window && window.location && window.location.hostname;
-
-
-if (hostname === 'localhost') {
-  location = 'http://localhost:4000'
-} else {
-  location = 'https://holy-mackerel.gigalixirapp.com'
-}
-
+let location = window.location.protocol + "//" + window.location.host;
 let path = '/api/restaurants/';
 
 class RestaurantDetail extends Component {
@@ -21,13 +12,13 @@ class RestaurantDetail extends Component {
   }
 
   componentDidMount () {
-    const name = this.props.match.params.name
-    const id = this.props.location.state.id
+    const name = this.props.match.params.id
     this.loadData(name);
   }
 
   loadData(name) {
     let restaurantUrl = location + path + name;
+    console.log("url: " + restaurantUrl)
     fetchRestaurantsApi(restaurantUrl)
       .then(response => this.setState({ restaurant: response })
     )

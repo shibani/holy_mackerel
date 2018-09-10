@@ -8,8 +8,7 @@ class RestaurantItem extends Component {
     const { restId, name  } = this.props;
 
     const linkTo = { 
-      pathname: "/restaurants/" + slugify(name),
-      state: {id: restId}
+      pathname: "/restaurants/" + slugify(name)
     };
 
     return (

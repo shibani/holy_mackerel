@@ -6,10 +6,12 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 import { shallow, mount, render } from 'enzyme';
-import RestaurantItem from '../js/components/RestaurantItem'
+import { MemoryRouter } from 'react-router-dom';
+import RestaurantItem from '../js/components/RestaurantItem';
 chai.use(chaiEnzyme())
 
-const wrapper = mount(<RestaurantItem restId="3" name="foo"/>)
+
+const wrapper = mount(<MemoryRouter><RestaurantItem restId="3" name="foo" /></MemoryRouter>)
 
 describe('Restaurant Item Component', () => {
   
@@ -17,7 +19,11 @@ describe('Restaurant Item Component', () => {
     expect(wrapper.find('li').text()).to.equal('foo')
   })
 
-  it('has an id', () => {
+  it('renders a list where each list item has an id', () => {
+    expect(wrapper.find('li').first()).to.have.id('item-3')
+  })
+
+  it('renders a list where each list item is a link', () => {
     expect(wrapper.find('li').first()).to.have.id('item-3')
   })
 })

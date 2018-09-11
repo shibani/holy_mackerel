@@ -3,6 +3,7 @@ defmodule YelpWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+    html = html_response(conn, 200)
+    assert html =~ ~r("react-app")
   end
 end

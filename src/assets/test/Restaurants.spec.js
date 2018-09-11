@@ -5,9 +5,10 @@ import { expect, assert, should } from 'chai'
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
-import { shallow, mount, render } from 'enzyme'
-import Restaurants from '../js/components/Restaurants'
-import RestaurantItem from '../js/components/RestaurantItem'
+import { shallow, mount, render } from 'enzyme';
+import Restaurants from '../js/components/Restaurants';
+import RestaurantItem from '../js/components/RestaurantItem';
+import { MemoryRouter } from 'react-router-dom';
 chai.use(chaiEnzyme())
 
 
@@ -16,7 +17,7 @@ const listItems = [
   { id: 1, name:'Momofuku' }, 
   { id: 2, name:'Five Leaves' }
 ]
-const wrapper = mount(<Restaurants listItems={listItems} />)
+const wrapper = mount(<MemoryRouter><Restaurants listItems={listItems} /></MemoryRouter>)
 
 describe('Restaurants Component', () => {
   it('renders three <RestaurantItems /> components', () => {

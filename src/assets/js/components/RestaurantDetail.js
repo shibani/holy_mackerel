@@ -16,22 +16,27 @@ class RestaurantDetail extends Component {
     this.loadData(name);
   }
 
-  loadData(name) {
+  async loadData(name) {
     let restaurantUrl = location + path + name;
-    fetchRestaurantsApi(restaurantUrl)
-      .then(response => this.setState({ restaurant: response })
-    )
+    try{
+      const response = await fetchRestaurantsApi(restaurantUrl)
+      this.setState({restaurant: response})
+    } catch(err){
+      this.setState({errorStatus: 'Error fetching restaurant'});
+    }
   }
 
   render(){
+    const { errorStatus, restaurant } = this.state;
     return (
       <div className="restaurant-detail">
-      <span className="name">{this.state.restaurant.name}</span><br />
-      <span className="address1">{this.state.restaurant.address1}</span><br />
-      <span className="address2">{this.state.restaurant.address2 ? this.state.restaurant.address2.length + <br /> : ''}</span>
-      <span className="city-state">{this.state.restaurant.city}, {this.state.restaurant.state}</span><br />
-      <span className="phone">Ph: {this.state.restaurant.phone}</span><br />
-      <span className="website"><a href={this.state.restaurant.website}>{this.state.restaurant.website}</a></span>
+      { errorStatus && <p className="error">{errorStatus}</p> }
+      <span className="name">{restaurant.name}</span><br />
+      <span className="address1">{restaurant.address1}</span><br />
+      <span className="address2">{restaurant.address2 ? restaurant.address2.length + <br /> : ''}</span>
+      <span className="city-state">{restaurant.city}, {restaurant.state}</span><br />
+      <span className="phone">Ph: {restaurant.phone}</span><br />
+      <span className="website"><a href={restaurant.website}>{restaurant.website}</a></span>
       </div>
     );
   }

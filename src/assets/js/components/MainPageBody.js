@@ -10,23 +10,28 @@ let restaurantsUrl = location + path;
 class MainPageBody extends Component {
   constructor(props){
     super(props);
-    this.state = {items : [] }
+    this.state = {
+      items : [],
+      errorStatus: ''
+     }
   }
 
-  componentDidMount() {
-    this.loadData(restaurantsUrl);
-  }
-
-  loadData(url) {
-    fetchRestaurantsApi(url)
-      .then(response => this.setState({ items: response })
-    )
+  async componentDidMount() {
+    try{
+      const response = await fetchRestaurantsApi(restaurantsUrl)
+      this.setState({items: response})
+    } catch(err){
+      this.setState({errorStatus: 'Error fetching restaurants'});
+    }
   }
 
   render(){
+    const { errorStatus, items } = this.state;
+
     return (
       <div className="contents">
-        {<Restaurants listItems={this.state.items} />}
+        { errorStatus && <p className="error">{errorStatus}</p> }
+        {<Restaurants listItems={items} />}
       </div>
     );
   }

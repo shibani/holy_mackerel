@@ -3,7 +3,6 @@ defmodule YelpWeb.RestaurantViewTest do
 
   alias Yelp.Restaurants
 
-  #Bring render/3 and render_to_string/3 for testing custom views
   alias YelpWeb.RestaurantView
 
   @create_attrs1 %{address1: "some address1", address2: "some address2", city: "some city", name: "Foo Restaurant", phone: "some phone", state: "some state", website: "some website", slug: "some-name"}

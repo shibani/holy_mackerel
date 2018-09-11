@@ -18,7 +18,6 @@ class MainPageBody extends Component {
   }
 
   loadData(url) {
-    console.log("url: " + url)
     fetchRestaurantsApi(url)
       .then(response => this.setState({ items: response })
     )

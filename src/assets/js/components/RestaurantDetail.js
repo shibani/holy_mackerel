@@ -18,7 +18,6 @@ class RestaurantDetail extends Component {
 
   loadData(name) {
     let restaurantUrl = location + path + name;
-    console.log("url: " + restaurantUrl)
     fetchRestaurantsApi(restaurantUrl)
       .then(response => this.setState({ restaurant: response })
     )

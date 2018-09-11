@@ -56,8 +56,7 @@ defmodule YelpWeb.RestaurantControllerTest do
     test "renders restaurant when data is valid", %{conn: conn, restaurant: %Restaurant{id: id} = restaurant} do
       conn = put conn, restaurant_path(conn, :update, restaurant), restaurant: @update_attrs
 
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
-      assert %{"slug" => slug} = json_response(conn, 200)["data"]
+      assert %{"id" => ^id, "slug" => slug} = json_response(conn, 200)["data"]
 
       conn = get conn, restaurant_path(conn, :show, slug)
       assert json_response(conn, 200)["data"] == %{

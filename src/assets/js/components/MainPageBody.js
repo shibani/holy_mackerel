@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Restaurants from "./Restaurants";
 import { fetchRestaurantsApi } from '../utils/fetch-utils';
+import RestaurantForm from "./RestaurantForm";
 
 const fetch = require('isomorphic-fetch');
 let location = window.location.protocol + "//" + window.location.host;
@@ -32,6 +33,7 @@ class MainPageBody extends Component {
       <div className="contents">
         { errorStatus && <p className="error">{errorStatus}</p> }
         {<Restaurants listItems={items} />}
+        {<RestaurantForm />}
       </div>
     );
   }

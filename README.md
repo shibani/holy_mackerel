@@ -28,8 +28,8 @@ ___
 In terminal, enter: `docker images`  
 
 **To view your containers:**  
-`docker container ls` (will show you only started containers)  
-`docker container ls --all` (will show you all containers, stopped and started)  
+`docker container ps` (will show you only started containers)  
+`docker container ps --all` (will show you all containers, stopped and started)  
 
 **To stop your containers:**  
 `docker stop <name_of_app_container> <name_of_db_container>`  
@@ -38,6 +38,10 @@ In terminal, enter: `docker images`
 `docker start <name_of_app_container> <name_of_db_container>`  
 ___
 
-**To run tests:**  
+**To run phoenix tests:**  
 In root folder run
-`./mix tests`
+`./mix test`  
+
+**To run react tests:**  
+cd into src/assets and run
+`npm test`

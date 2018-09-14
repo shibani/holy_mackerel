@@ -10,4 +10,16 @@ describe('slugify', () => {
         let name = "Five Leaves"
         expect(slugify(name)).to.equal("five-leaves")
     })
+
+    it('removes ampersands', () => {
+        
+        let name = "Marlow & Sons"
+        expect(slugify(name)).to.equal("marlow-sons")
+    })
+
+    it('removes apostrophes', () => {
+        
+        let name = "Foo's Bar"
+        expect(slugify(name)).to.equal("foos-bar")
+    })
 });

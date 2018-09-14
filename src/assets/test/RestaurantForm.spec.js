@@ -5,11 +5,12 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 import { shallow, mount, render } from 'enzyme';
 import RestaurantForm from '../js/components/RestaurantForm';
-import { spy } from 'sinon';
+import sinon from 'sinon';
+const request = require('request');
+const restaurants = require('./fixtures/restaurants.json');
 
 describe('RestaurantForm Component', () => {
     let wrapper;
-    let responseState;
 
     beforeEach(() => {
 
@@ -18,14 +19,14 @@ describe('RestaurantForm Component', () => {
         )
 
         wrapper.setState({ 
-            name: "Foo", 
+            name: "Foobar", 
             address1: "111 Main Street", 
             address2: 'address',
             city: 'New York',
             state: 'NY',
             phone: '212-222-2222',
             website: 'http://www.foo.com',
-            submitted: false
+            formSubmitted: false
         })
     })
 
@@ -39,12 +40,12 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct name value', () => {
-        expect(wrapper.find('input[name="name"]')).to.have.value('Foo');
+        expect(wrapper.find('input[name="name"]')).to.have.value('Foobar');
     });
 
     it('handles changes to the name field', () => {
-        wrapper.find('input[name="name"]').simulate('change', {target: {name: 'name', value: 'Bar'}});
-        expect(wrapper.find('input[name="name"]')).to.have.value('Bar');
+        wrapper.find('input[name="name"]').simulate('change', {target: {name: 'name', value: 'BarBaz'}});
+        expect(wrapper.find('input[name="name"]')).to.have.value('BarBaz');
     });
 
     it('should have an address1 field', () => {
@@ -134,11 +135,145 @@ describe('RestaurantForm Component', () => {
     it('should have an submit button', () => {
         expect(wrapper.find('input[type="submit"]')).to.be.present()
     });
+});
+
+describe('validation and form submit', () => {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = mount(
+            <RestaurantForm />
+        )
+
+        wrapper.setState({ 
+            name: "Foobar", 
+            address1: "111 Main Street", 
+            address2: 'address',
+            city: 'New York',
+            state: 'NY',
+            phone: '212-222-2222',
+            website: 'http://www.foo.com',
+            formSubmitted: false
+        })
+
+        sinon.stub(global, 'fetch')
+
+        let data = {};
+        let res = new global.Response(data, {
+            ok: true,
+            status: 200,
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        global.fetch.returns(Promise.resolve(res));
+    });
+    
+    afterEach(() => {
+        global.fetch.restore();
+    });
 
     it('triggers a submit event when submit is clicked', () => {
         const form = wrapper.find('form')
-        expect(wrapper.state().submitted).to.equal(false)
+        expect(wrapper.state().formSubmitted).to.equal(false)
         form.simulate('submit')
-        expect(wrapper.state().submitted).to.equal(true)
+        expect(wrapper.state().formSubmitted).to.equal(true)
     });
+
+    it('should not validate a form if the name is not valid', () => {
+        
+        wrapper.setState({ 
+            name: 'foo', 
+            address1: '', 
+            address2: '',
+            city: '',
+            state: '',
+            phone: '',
+            website: '',
+            formSubmitted: false,
+            errorStatus: false
+        })
+
+        const form = wrapper.find('form')
+        expect(wrapper.state().formSubmitted).to.equal(false)
+        form.simulate('submit')
+        expect(wrapper.state().formSubmitted).to.equal(false)
+    });
+
+    it('should validate a form if the name is valid', () => {
+
+        wrapper.setState({ 
+            name: 'foobar', 
+            address1: '', 
+            address2: '',
+            city: '',
+            state: '',
+            phone: '',
+            website: '',
+            formSubmitted: false,
+            errorStatus: false
+        })
+
+        const form = wrapper.find('form')
+        expect(wrapper.state().formSubmitted).to.equal(false)
+        form.simulate('submit')
+        expect(wrapper.state().formSubmitted).to.equal(true)
+    });
+
 });
+
+describe('RestaurantForm posts to the restaurants API and receives a 201 response on success', () => {
+    let formPost;
+
+    beforeEach(() => {
+        formPost = sinon.stub(request, 'post');
+    });
+    
+    afterEach(() => {
+        request.post.restore();
+    });
+       
+    it('should return the restaurant that was added', (done) => {
+        const options = {
+          body: {
+            name: 'Foobar',
+            address1: '111 Main Street',
+            address2: '',
+            city: 'Brooklyn',
+            state: 'NY',
+            phone: '212-222-2222',
+            website: 'http://wwww.foobar.com'
+          },
+          json: true
+        };
+        const obj = restaurants.add.success;
+        formPost.yields(null, obj.res, JSON.stringify(obj.body));
+        request.post(options, (err, res, body) => {
+            expect(res.statusCode).to.equal(201)
+            expect(res.headers['content-type']).to.contain('application/json')
+            body = JSON.parse(body);
+            expect(body.status).to.equal('success');
+            expect(body.data[0]).to.include.keys('name', 'address1', 'address2', 'city', 'state', 'phone', 'website');
+            expect(body.data[0].name).to.equal('Foobar');
+            done()
+        });
+    });
+
+    it('should receive a 400 response on failure', (done) => {
+        const options = {
+            body: {},
+            json: true
+        };
+        const obj = restaurants.add.failure;
+        formPost.yields(null, obj.res, JSON.stringify(obj.body));
+        
+        request.post(options, (err, res, body) => {
+            expect(res.statusCode).to.equal(400)
+            expect(res.headers['content-type']).to.contain('application/json')
+            body = JSON.parse(body);
+            expect(body.status).to.equal('error');
+            done()
+        });
+    });
+})

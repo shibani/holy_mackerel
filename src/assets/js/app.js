@@ -8,16 +8,6 @@ import MainPageBody from './components/MainPageBody';
 import NotFoundPage from './components/NotFoundPage';
 import RestaurantDetail from "./components/RestaurantDetail";
 
-class Login extends React.Component {
-    render() {
-      return (
-        <div className="login">
-            <h1>Hello Boring Login Page!</h1>
-        </div>
-      )
-    }
-}
-
 class App extends React.Component {
 
     render() {
@@ -31,7 +21,6 @@ class App extends React.Component {
                 <Switch>
                     <Route path="/" exact={true} component={MainPageBody} />
                     <Route path="/restaurants/:id" component={RestaurantDetail} />
-                    <Route path="/login" component={Login} />
                     <Route component={NotFoundPage} />
                 </Switch>
                 </div>

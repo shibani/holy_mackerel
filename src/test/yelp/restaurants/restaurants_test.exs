@@ -75,10 +75,16 @@ defmodule Yelp.RestaurantsTest do
     end
 
     test "can slugify its own name" do
-      name = "Gregory’s 26 Corner Taverna"
-      result = "gregorys-26-corner-taverna"
+      name = "Foo’s Restaurant"
+      result = "foos-restaurant"
       assert Restaurants.slugified_name(name) == result
-     end
+    end
+
+    test "slugified_name returns nil if name is nil or empty string" do
+      name = ""
+      result = ""
+      assert Restaurants.slugified_name(name) == result
+    end
   end
 end
 

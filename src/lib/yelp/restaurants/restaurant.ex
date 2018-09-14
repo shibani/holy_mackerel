@@ -19,6 +19,7 @@ defmodule Yelp.Restaurants.Restaurant do
   def changeset(restaurant, attrs) do
     restaurant
     |> cast(attrs, [:name, :address1, :address2, :city, :state, :phone, :website, :slug])
-    |> validate_required([:name])
+    |> validate_required(:name, [message: "Name is not valid"])
+    |> unique_constraint(:slug)
   end
 end

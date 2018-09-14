@@ -1,0 +1,38 @@
+{
+  "add": {
+    "success": {
+      "res": {
+        "statusCode": 201,
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "body": {
+        "status": "success",
+        "data": [
+          {
+            "name": "Foobar",
+            "address1": "111 Main Street",
+            "address2": "",
+            "city": "Brooklyn",
+            "state": "NY",
+            "phone": "212-222-2222",
+            "website": "http://wwww.foo.com"
+          }
+        ]
+      }
+    },
+    "failure": {
+      "res": {
+        "statusCode": 400,
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "body": {
+        "status": "error",
+        "message": "Something went wrong."
+      }
+    }
+  }
+}

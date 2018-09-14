@@ -1,5 +1,6 @@
 defmodule YelpWeb.RestaurantController do
   import Ecto.Query, warn: false
+  import Yelp.Restaurants
   alias Yelp.Repo
   use YelpWeb, :controller
 
@@ -14,6 +15,8 @@ defmodule YelpWeb.RestaurantController do
   end
 
   def create(conn, %{"restaurant" => restaurant_params}) do
+    name = Map.get(restaurant_params, "name")
+    restaurant_params = Map.put(restaurant_params, "slug", slugified_name(name))
     with {:ok, %Restaurant{} = restaurant} <- Restaurants.create_restaurant(restaurant_params) do
       conn
       |> put_status(:created)

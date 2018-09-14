@@ -21,23 +21,15 @@ defmodule Yelp.Restaurants do
     Repo.all(Restaurant)
   end
 
-  def get_restaurant_by_name!(name) do
-    query = from r in Restaurant, where: r.name == ^name
-    [restaurant] = Repo.all(query)
-    restaurant
-  end
-
-  def get_restaurant_by_slug!(slug) do
-    query = from r in Restaurant, where: r.slug == ^slug
-    [restaurant] = Repo.all(query)
-    restaurant
-  end
-
   def slugified_name(name) do
-    name
-      |> String.downcase
-      |> String.replace(~r/[^a-z0-9\s-]/, "")
-      |> String.replace(~r/(\s|-)+/, "-")
+    if name not in [0, nil] do
+      name
+        |> String.downcase
+        |> String.replace(~r/[^a-z0-9\s-]/, "")
+        |> String.replace(~r/(\s|-)+/, "-")
+    else
+      name
+    end
   end
 
   @doc """
@@ -119,11 +111,5 @@ defmodule Yelp.Restaurants do
   """
   def change_restaurant(%Restaurant{} = restaurant) do
     Restaurant.changeset(restaurant, %{})
-  end
-end
-
-defimpl Phoenix.Param, for: Restaurants.Restaurant do
-  def to_param(%{slug: slug}) do
-    "#{slug}"
   end
 end

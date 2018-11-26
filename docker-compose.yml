@@ -7,12 +7,10 @@ services:
     ports:
       - "4000:4000"
     environment:
-      # Variables to connect to our Postgres server
       PGUSER: postgres
       PGPASSWORD: postgres
       PGDATABASE: yelp_dev
       PGPORT: 5432
-      # Hostname of our Postgres container
       PGHOST: db
     volumes:
       - ./src:/app
@@ -21,14 +19,11 @@ services:
   db:
     image: postgres:10
     environment:
-      # Set user/password for Postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      # Set a path where Postgres should store the data
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
-# Define the volumes
 volumes:
   pgdata:

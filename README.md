@@ -9,13 +9,15 @@
 
 **In the root folder run**
 * `./mix deps.get`
-* `./mix ecto.create`
-* `./mix ecto.migrate`
+* `./mix ecto.create`  
 
 **cd from the root into the** `src` **folder. Now run:**  
 `cd assets && npm install`  
 &nbsp;  
-**Note:** When running `npm install` above, the auto-installed `Growl 1.8.1` dependency shows up as a critical vulnerability in Git. To fix this, cd into `assets` and open `package-lock.json`.  Find and replace all `Growl 1.8.1` dependencies with `Growl 1.10.0`)
+**Note:** When running `npm install` above, the auto-installed `Growl 1.8.1` dependency shows up as a critical vulnerability in Git. To fix this, cd into `assets` and open `package-lock.json`.  Find and replace all `Growl 1.8.1` dependencies with `Growl 1.10.0`)  
+
+**To run Migrations:**
+* `./mix ecto.migrate`  
 
 **To build and start up your container (recreates the container):**  
 `docker-compose up`  

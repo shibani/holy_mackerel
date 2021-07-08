@@ -35,27 +35,22 @@ describe('postToRestaurantsApi calls the expected URL', () => {
  
     it('calls fetch', () => {
         const expectedUrl = 'http://www.bar.com'; 
-        return apis.postToRestaurantsApi(expectedUrl).then(() => {
-        expect(fetchMock).route(expectedUrl).to.have.been.called;
+        return apis.postToRestaurantsApi(expectedUrl, {}).then(() => {
+        expect(fetchMock).route(expectedUrl).to.have.been.called.with.url('http://www.bar.com');
         });
     });
 
-    afterEach(() => {
-        fetchMock.restore();
-    })
-});
-
-describe('postToRestaurantsApi', () => {
-    
-    beforeEach(() => {
-        const restaurantsUrl = 'http://www.bar.com';
-        fetchMock.post(restaurantsUrl, {})
-    })
- 
-    it('calls fetch', () => {
+    it('calls fetch with application/json headers', () => {
         const expectedUrl = 'http://www.bar.com'; 
-        return apis.postToRestaurantsApi(expectedUrl).then(() => {
-        expect(fetchMock).route(expectedUrl).to.have.been.called;
+        const json = {name: "Foo"}
+        return apis.postToRestaurantsApi(expectedUrl, json).then(() => {
+        expect(fetchMock).route(expectedUrl).to.have.been.called.with.options({
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                            'Content-Type': 'application/json'},
+                body: '{"restaurant":{"name":"Foo"}}'
+            });
         });
     });
 

@@ -17,17 +17,7 @@ describe('RestaurantForm Component', () => {
         wrapper = mount(
             <RestaurantForm />
         )
-
-        wrapper.setState({ 
-            name: "Foobar", 
-            address1: "111 Main Street", 
-            address2: 'address',
-            city: 'New York',
-            state: 'NY',
-            phone: '212-222-2222',
-            website: 'http://www.foo.com',
-            formSubmitted: false
-        })
+        
     })
 
     it('should have a title', () => {
@@ -40,6 +30,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct name value', () => {
+        let name = wrapper.find('input[name="name"]')
+        name.instance().value = 'Foobar'
         expect(wrapper.find('input[name="name"]')).to.have.value('Foobar');
     });
 
@@ -54,6 +46,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct address1 value', () => {
+        let address1 = wrapper.find('input[name="address1"]')
+        address1.instance().value = '111 Main Street'
         expect(wrapper.find('input[name="address1"]')).to.have.value('111 Main Street');
     });
 
@@ -68,6 +62,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct address2 value', () => {
+        let address2 = wrapper.find('input[name="address2"]')
+        address2.instance().value = 'address'
         expect(wrapper.find('input[name="address2"]')).to.have.value('address');
     });
 
@@ -82,6 +78,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct city value', () => {
+        let city = wrapper.find('input[name="city"]')
+        city.instance().value = 'New York'
         expect(wrapper.find('input[name="city"]')).to.have.value('New York');
     });
 
@@ -96,6 +94,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct state value', () => {
+        let state = wrapper.find('input[name="state"]')
+        state.instance().value = 'NY'
         expect(wrapper.find('input[name="state"]')).to.have.value('NY');
     });
 
@@ -110,6 +110,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct phone value', () => {
+        let phone = wrapper.find('input[name="phone"]')
+        phone.instance().value = '212-222-2222'
         expect(wrapper.find('input[name="phone"]')).to.have.value('212-222-2222');
     });
 
@@ -124,6 +126,8 @@ describe('RestaurantForm Component', () => {
     });
 
     it('displays the correct website value', () => {
+        let website = wrapper.find('input[name="website"]')
+        website.instance().value = 'http://www.foo.com'
         expect(wrapper.find('input[name="website"]')).to.have.value('http://www.foo.com');
     });
 
@@ -223,7 +227,7 @@ describe('validation and form submit', () => {
 
 });
 
-describe('RestaurantForm posts to the restaurants API and receives a 201 response on success', () => {
+describe('RestaurantForm posts to the restaurants API and receives a response', () => {
     let formPost;
 
     beforeEach(() => {
@@ -234,7 +238,7 @@ describe('RestaurantForm posts to the restaurants API and receives a 201 respons
         request.post.restore();
     });
        
-    it('should return the restaurant that was added', (done) => {
+    it('should return a 201 on success if the restaurant was created', (done) => {
         const options = {
           body: {
             name: 'Foobar',

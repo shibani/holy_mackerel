@@ -15,8 +15,4 @@ describe('Footer Component', () => {
   it('has a link to the homepage', () => {
     expect(wrapper.find('ul li').first()).to.have.html('<li><Link to="/" replace={false}>Home</Link></li>');
   });
-
-  it('has a link to the login page', () => {
-    expect(wrapper.find('ul li').last()).to.have.html('<li><Link to="/login" replace={false}>Login</Link></li>')
-  });
 })
